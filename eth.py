@@ -33,5 +33,7 @@ if(se=='h' or se=='a'):
 	cont=str(tmp.content.decode())
 	soup =BeautifulSoup(cont, 'html.parser')
 	mydivs = soup.findAll("a", {"class": "hin_dict_span"})
-	for i in mydivs:
-		print(i.find('span').contents[0])
+	eng=soup.findAll("a", {"class":"eng_dict_span"})
+	for i in range(0,len(eng)-1):
+		if (eng[i].find('span').contents[0].lower())==word.lower():
+			print(mydivs[i].find('span').contents[0].replace('\n',' '))
